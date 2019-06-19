@@ -9,7 +9,7 @@ contract lab3{
     }
     modifier onlyowner()
     {
-        require(msg.sender==owner);
+        require(msg.sender==owner,"only the owner can call it");
         _;
     }   
     modifier stateisopen()

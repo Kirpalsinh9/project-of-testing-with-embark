@@ -27,21 +27,6 @@ config(
 contract("lab3", function () {
   this.timeout(0);
 
-  // it("should set state to open", async function() {
-  //   let result = await SimpleStorage.methods.storedData().call();
-  //   assert.strictEqual(parseInt(result, 10), 100);
-  // });
-
-  // it("set storage value", async function () {
-  //   await SimpleStorage.methods.set(150).send();
-  //   let result = await SimpleStorage.methods.get().call();
-  //   assert.strictEqual(parseInt(result, 10), 150);
-  // });
-
-  // it("should have account with balance", async function() {
-  //   let balance = await web3.eth.getBalance(accounts[0]);
-  //   assert.ok(parseInt(balance, 10) > 0);
-  // });
   it("Contract was deployed", async function () {
     let address1 = lab3.options.address;
 
@@ -65,15 +50,20 @@ contract("lab3", function () {
   it("Try to change state from another address", async function () {
     try {
       await lab3.methods.setstateopen().send({ from: accounts[1] });
-      assert.ok(false);
-    } catch {
-      assert.ok(true);
+
+    } catch (error) {
+      console.log('failure 1')
+      let a = error.message
+      assert.ok(a.includes("only the owner can call it"))
     }
     try {
       await lab3.methods.setstateclosed().send({ from: accounts[1] });
-      assert.ok(false);
-    } catch {
-      assert.ok(true);
+
+    } catch (error) {
+      console.log('failure 2')
+      let actuallerror = error.message;
+      assert.ok(actuallerror.includes("only the owner can call it"))
     }
   });
+
 });
