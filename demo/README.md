@@ -1,4 +1,13 @@
-# `embark-dapp-template-simple`
+
+Installation and setup
+Please install Embark, follow the instructions here.
+
+Run these commands,
+
+npm install
+embark simulator
+embark run
+embark test --coverage
 
 > Contracts-only DApp template for Embark
 
