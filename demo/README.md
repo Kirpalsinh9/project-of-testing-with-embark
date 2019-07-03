@@ -5,8 +5,11 @@ Please install Embark, follow the instructions here.
 Run these commands,
 
 npm install
+
 embark simulator
+
 embark run
+
 embark test --coverage
 
 
